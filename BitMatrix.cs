@@ -98,9 +98,9 @@ public class BitMatrix : IEquatable<BitMatrix>
         return result;
     }
 
-    public bool Equals(BitMatrix matrix)
+    public bool Equals(BitMatrix? matrix)
     {
-        if (matrix == null || NumberOfRows != matrix.NumberOfRows || NumberOfColumns != matrix.NumberOfColumns) return false;
+        if (matrix is null || NumberOfRows != matrix.NumberOfRows || NumberOfColumns != matrix.NumberOfColumns) return false;
 
         for (int i = 0; i < data.Length; i++)
         {
@@ -111,7 +111,7 @@ public class BitMatrix : IEquatable<BitMatrix>
     }
 
     // override object.Equals
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj == null || GetType() != obj.GetType()) return false;
         
