@@ -1,8 +1,1 @@
-obj/Debug/net6.0/Test.dll
-obj/Debug/net6.0/Test.pdb
-obj/Debug/net6.0/ref/Test.dll
-obj/Debug/net6.0/refint/Test.dll
-bin/Debug/net6.0/Test.dll
-bin/Debug/net6.0/Test.pdb
-obj/Debug/net6.0/Test.assets.cache
-obj/Debug/net6.0/Test.GeneratedMSBuildEditorConfig.editorconfig
+obj/Debug
