@@ -113,8 +113,7 @@ public class BitMatrix : IEquatable<BitMatrix>
     public override bool Equals(object? obj)
     {
         if (obj == null || GetType() != obj.GetType()) return false;
-        
-        return Equals((BitMatrix)obj);
+        else return Equals((BitMatrix)obj);
     }
 
     public override int GetHashCode()
