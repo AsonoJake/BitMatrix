@@ -102,11 +102,11 @@ public class BitMatrix : IEquatable<BitMatrix>
     {
         if (object.ReferenceEquals(this, matrix)) return true;
         
-        if (matrix is null || NumberOfRows != matrix.NumberOfRows || NumberOfColumns != matrix.NumberOfColumns) return false;
+        if (matrix is null || this.NumberOfRows != matrix.NumberOfRows || this.NumberOfColumns != matrix.NumberOfColumns) return false;
 
         for (int i = 0; i < data.Length; i++)
         {
-            if (data[i] != matrix.data[i]) return false;
+            if (this.data[i] != matrix.data[i]) return false;
         } 
 
         return true;
