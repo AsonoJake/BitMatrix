@@ -100,6 +100,8 @@ public class BitMatrix : IEquatable<BitMatrix>
 
     public bool Equals(BitMatrix? matrix)
     {
+        if (object.ReferenceEquals(this, matrix)) return true;
+        
         if (matrix is null || NumberOfRows != matrix.NumberOfRows || NumberOfColumns != matrix.NumberOfColumns) return false;
 
         for (int i = 0; i < data.Length; i++)
