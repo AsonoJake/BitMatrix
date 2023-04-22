@@ -9,6 +9,16 @@ public class BitMatrix : IEquatable<BitMatrix>
     public int NumberOfRows { get; }
     public int NumberOfColumns { get; }
     public bool IsReadOnly => false;
+
+    public BitMatrix(int numberOfRows, int numberOfColumns, int defaultValue = 0)
+    {
+        if (numberOfRows < 1 || numberOfColumns < 1)
+            throw new ArgumentOutOfRangeException("Incorrect size of matrix");
+        data = new BitArray(numberOfRows*numberOfColumns, BitToBool(defaultValue));
+        NumberOfRows = numberOfRows;
+        NumberOfColumns = numberOfColumns;           
+    }
+    
     public BitMatrix(int numberOfRows, int numberOfColumns, params int[] bits)
     {
         if (numberOfRows < 1 || numberOfColumns < 1)
@@ -30,7 +40,7 @@ public class BitMatrix : IEquatable<BitMatrix>
 
     public BitMatrix(int[,] bits)
     {
-        if (bits == null)
+        if (bits is null)
             throw new NullReferenceException("bits cannot be null");
 
         int numberOfRows = bits.GetLength(0);
@@ -56,7 +66,7 @@ public class BitMatrix : IEquatable<BitMatrix>
 
     public BitMatrix(bool[,] bits)
     {
-        if (bits == null)
+        if (bits is null)
             throw new NullReferenceException("bits cannot be null");
 
         int numberOfRows = bits.GetLength(0);
@@ -114,7 +124,7 @@ public class BitMatrix : IEquatable<BitMatrix>
 
     public override bool Equals(object? obj)
     {
-        if (obj == null || GetType() != obj.GetType()) return false;
+        if (obj is null || GetType() != obj.GetType()) return false;
         else return Equals((BitMatrix)obj);
     }
 

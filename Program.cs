@@ -33,12 +33,12 @@ class Program
         // Console.Write(o.ToString());
         // Console.WriteLine();
 
-        // var m1 = new BitMatrix(5, 6);
-        // var m2 = m1;
-        // Console.WriteLine(m1.Equals(m2));
+        var m = new BitMatrix(5, 6);
+        var m2 = m;
+        Console.WriteLine(m.Equals(m2));
 
-        var m3 = new BitMatrix(5, 6);
-        var m4 = new BitMatrix(6, 5);
-        Console.WriteLine(m3.Equals(m4));
+        var m1 = new BitMatrix(5, 6);
+        var m3 = new BitMatrix(6, 5);
+        Console.WriteLine(m1.Equals(m3));
     }
 }
