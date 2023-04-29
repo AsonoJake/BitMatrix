@@ -108,50 +108,50 @@ public class BitMatrix : IEquatable<BitMatrix>
         return result;
     }
 
-    public bool Equals(BitMatrix? matrix)
+// Przesłonięcie metody Equals zdefiniowanej w interfejsie IEquatable<BitMatrix>
+    public bool Equals(BitMatrix other)
     {
-        if (object.ReferenceEquals(this, matrix)) return true;
-        
-        if (matrix is null || this.NumberOfRows != matrix.NumberOfRows || this.NumberOfColumns != matrix.NumberOfColumns) return false;
-
-        for (int i = 0; i < data.Length; i++)
-        {
-            if (this.data[i] != matrix.data[i]) return false;
-        } 
-
+        if (other == null) return false;
+        if (NumberOfRows != other.NumberOfRows || NumberOfColumns != other.NumberOfColumns) return false;
+        for (int i = 0; i < data.Length; i++){
+            if (data[i] != other.data[i])
+                return false;
+        }
         return true;
     }
-
-    public override bool Equals(object? obj)
+    // Przesłonięcie metody Equals z klasy object
+    public override bool Equals(object obj)
     {
-        if (obj is null || GetType() != obj.GetType()) return false;
-        else return Equals((BitMatrix)obj);
+        if (obj == null || GetType() != obj.GetType())
+            return false;
+        return Equals(obj as BitMatrix);
     }
-
+    
+    // Przesłonięcie metody GetHashCode z klasy object
     public override int GetHashCode()
     {
         int hash = 17;
         hash = hash * 23 + NumberOfRows.GetHashCode();
         hash = hash * 23 + NumberOfColumns.GetHashCode();
-        
         for (int i = 0; i < data.Length; i++)
-        {
             hash = hash * 23 + data[i].GetHashCode();
-        }
         return hash;
     }
-
-    public static bool operator ==(BitMatrix matrix1, BitMatrix matrix2)
+    
+    // Przeciążenie operatora ==
+    public static bool operator ==(BitMatrix lhs, BitMatrix rhs)
     {
-        if (ReferenceEquals(matrix1, matrix2)) return true;
-
-        if (matrix1 is null || matrix2 is null) return false;
-
-        return matrix1.Equals(matrix2);
+        if (ReferenceEquals(lhs, null))
+        {
+            if (ReferenceEquals(rhs, null)) return true;
+            return false;
+        }
+        return lhs.Equals(rhs);
     }
-
-    public static bool operator !=(BitMatrix matrix1, BitMatrix matrix2)
+    
+    // Przeciążenie operatora !=
+    public static bool operator !=(BitMatrix lhs, BitMatrix rhs)
     {
-        return !(matrix1 == matrix2);
+        return !(lhs == rhs);
     }
 }
